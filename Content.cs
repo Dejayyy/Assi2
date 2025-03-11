@@ -2,7 +2,7 @@ using System;
 
 namespace Assi2
 {
-    abstract class Content : ICloneable
+    abstract class Content 
     {
         public void Print()
         {
@@ -13,6 +13,6 @@ namespace Assi2
 
         protected abstract string GetPrintableTitle();
         protected abstract string GetPrintableBody();
-        public abstract object Clone();
+        public abstract Content Clone();
     }
 }

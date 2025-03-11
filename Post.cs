@@ -16,9 +16,12 @@ namespace Assi2
         {
         }
 
-        public override object Clone()
+        public override Content Clone()
         {
-            return new Post(this.Title, this.Body);
+            Post n = new Post();
+            n.Title = this.Title;
+            n.Body = this.Body;
+            return n;
         }
 
         protected override string GetPrintableBody()

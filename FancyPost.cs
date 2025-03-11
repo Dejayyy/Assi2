@@ -8,6 +8,10 @@ namespace Assi2
 
         }
 
+        public FancyPost() : base("Default Title", "Default Body")
+        {
+        }
+
         protected override string GetPrintableTitle()
         {
             return "\u2605\u2605\u2605 " + Title.ToUpper() + " \u2605\u2605\u2605";
@@ -18,9 +22,12 @@ namespace Assi2
                    "|| " + Body + "||\n" +
                    "=========================================";
         }
-        public override object Clone()
+        public override Content Clone()
         {
-            return new FancyPost(this.Title, this.Body);
+            FancyPost n = new FancyPost();
+            n.Title = this.Title;
+            n.Body = this.Body;
+            return n;
         }
     }
 }

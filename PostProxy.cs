@@ -4,7 +4,7 @@ namespace Assi2
 {
     class PostProxy : Content
     {
-        public override object Clone()
+        public override Content Clone()
         {
             throw new NotImplementedException();
         }
