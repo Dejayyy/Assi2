@@ -4,7 +4,7 @@ namespace Assi2
 {
     abstract class Content 
     {
-        public void Print()
+        public virtual void Print()
         {
             Console.WriteLine("Title: " + GetPrintableTitle());
             Console.WriteLine("Body: " + GetPrintableBody());

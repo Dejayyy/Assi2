@@ -16,6 +16,11 @@ namespace Assi2
         {
         }
 
+        public sealed override void Print()
+        {
+            base.Print();
+        }
+
         public override Content Clone()
         {
             Post n = new Post();
