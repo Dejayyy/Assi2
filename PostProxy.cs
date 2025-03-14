@@ -27,6 +27,12 @@ namespace Assi2
             return _isDownloaded;
         }
 
+        public void CreateNewPost(Post prototype)
+        {
+            _realPost = (Post)prototype.Clone();
+            _isDownloaded = true; 
+        }
+
         public void SetTitle(string title)
         {
             if (!_isDownloaded)
