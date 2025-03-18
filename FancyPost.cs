@@ -2,26 +2,34 @@ using System;
 
 namespace Assi2
 {
+    //FancyPost class inherits from Post
     class FancyPost : Post
     {
+        //Default cstor with parameters
         public FancyPost(string t, string b) : base(t, b) {
 
         }
 
-        public FancyPost() : base("Default Title", "Default Body")
+        //Default cstor w/o parameters
+        public FancyPost() : base("Downloaded Title", "Downloaded Body")
         {
         }
 
-        protected override string GetPrintableTitle()
+        //Override for GetPrintableTitle()
+        public override string GetPrintableTitle()
         {
-            return "\u2605\u2605\u2605 " + Title.ToUpper() + " \u2605\u2605\u2605";
+            return "??? " + Title.ToUpper() + " ???";
         }
-        protected override string GetPrintableBody()
+
+        //Override for GetPrintableBody()
+        public override string GetPrintableBody()
         {
             return "=========================================\n" +
-                   "|| " + Body + "||\n" +
+                     Body + "\n"+
                    "=========================================";
         }
+        
+        //Clone implementation for FancyPost
         public override Content Clone()
         {
             FancyPost n = new FancyPost();

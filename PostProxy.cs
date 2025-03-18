@@ -2,17 +2,21 @@ using System;
 
 namespace Assi2
 {
+    //PostProxy class inherits from Content
     class PostProxy : Content
     {
+        //Private members
         private Post _realPost;
         private bool _isDownloaded;
 
+        //Default cstor w/o parameters
         public PostProxy()
         {
             _isDownloaded = false;
             _realPost = null;
         }
 
+        //Method to download a post and sets _realPost to FancyPost
         public void Download()
         {
             if (!_isDownloaded)
@@ -21,18 +25,21 @@ namespace Assi2
                 _isDownloaded = true;
             }
         }
-
+        
+        //Bool check
         public bool IsDownloaded()
         {
             return _isDownloaded;
         }
 
+        //Method to create a new post by using Clone()
         public void CreateNewPost(Post prototype)
         {
             _realPost = (Post)prototype.Clone();
             _isDownloaded = true; 
         }
 
+        //Method to set the title
         public void SetTitle(string title)
         {
             if (!_isDownloaded)
@@ -47,11 +54,12 @@ namespace Assi2
             }
         }
 
+        //Method to set the body
         public void SetBody(string body)
         {
             if (!_isDownloaded)
             {
-                Console.WriteLine("Error: Post not downloaded yet!");
+                Console.WriteLine("Error: Post not downloaded yet!"); ;
                 return;
             }
 
@@ -61,6 +69,7 @@ namespace Assi2
             }
         }
 
+        //Clone implementation for PostProxy
         public override Content Clone()
         {
             PostProxy newProxy = new PostProxy();
@@ -72,31 +81,34 @@ namespace Assi2
             return newProxy;
         }
 
-        protected override string GetPrintableBody()
+        //Override for GetPrintableBody()
+        public override string GetPrintableBody()
         {
             if (!_isDownloaded)
             {
-                return "[Post not downloaded yet]";
+                return "Loading...";
             }
             if (_realPost != null)
             {
-                return _realPost.Body;
+                return $"{_realPost.GetPrintableBody()}";
             }
             return "Unable to access post body";
 
         }
 
-        protected override string GetPrintableTitle()
+        //Override for GetPrintableTitle()
+        public override string GetPrintableTitle()
         {
             if (!_isDownloaded)
             {
-                return "[Post not downloaded yet]";
+                return "Loading...";
             }
             if (_realPost != null)
             {
-                return _realPost.Title;
+                return $"{_realPost.GetPrintableTitle()}";
             }
             return "Unable to access post title";
         }
     }
 }
+        
